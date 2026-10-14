@@ -1,0 +1,7 @@
+de:
+  button_fast_close: "Schließen"
+  notice_issue_closed: "Ticket erfolgreich geschlossen."
+  error_no_closed_status: "In Redmine ist kein geschlossener Status definiert."
+  error_status_transition_not_allowed: "Sie dürfen dieses Ticket nicht schließen."
+  label_closed_status: "Ziel-Status für das Schließen"
+  label_default_closed_status: "Erster geschlossener Status (Standard)"

@@ -1,0 +1,7 @@
+pt:
+  button_fast_close: "Fechar"
+  notice_issue_closed: "Tarefa fechada com sucesso."
+  error_no_closed_status: "Não existe nenhum estado fechado definido no Redmine."
+  error_status_transition_not_allowed: "Não tem permissão para fechar esta tarefa."
+  label_closed_status: "Estado de fecho de destino"
+  label_default_closed_status: "Primeiro estado fechado (predefinido)"

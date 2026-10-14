@@ -1,0 +1,7 @@
+fr:
+  button_fast_close: "Fermer"
+  notice_issue_closed: "Demande fermée avec succès."
+  error_no_closed_status: "Aucun statut fermé n'est défini dans Redmine."
+  error_status_transition_not_allowed: "Vous n'êtes pas autorisé à fermer cette demande."
+  label_closed_status: "Statut de fermeture cible"
+  label_default_closed_status: "Premier statut fermé (par défaut)"
