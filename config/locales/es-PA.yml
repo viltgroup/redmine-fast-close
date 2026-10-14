@@ -1,0 +1,7 @@
+es-PA:
+  button_fast_close: "Cerrar"
+  notice_issue_closed: "Incidencia cerrada correctamente."
+  error_no_closed_status: "No hay ningún estado cerrado definido en Redmine."
+  error_status_transition_not_allowed: "No tiene permiso para cerrar esta incidencia."
+  label_closed_status: "Estado de cierre de destino"
+  label_default_closed_status: "Primer estado cerrado (predeterminado)"
