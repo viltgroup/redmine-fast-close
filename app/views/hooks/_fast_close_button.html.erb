@@ -11,19 +11,21 @@
         if (!hook) return;
 
         var link = hook.querySelector('a');
-        var issueDiv = document.querySelector('div.issue.details');
-        var contextual = document.querySelector('div.issue .next-prev-links');
+        var contextual = document.querySelector('#content > .contextual');
+        if (!contextual || !link) return;
 
-        if (!contextual && issueDiv) {
-          contextual = document.createElement('div');
-          contextual.className = 'next-prev-links contextual';
-          issueDiv.insertBefore(contextual, issueDiv.firstChild);
-        }
+        // Place the link between Copy and the actions dropdown.
+        var copy = contextual.querySelector('a.icon-copy');
+        var dropdown = contextual.querySelector('.drdn');
 
-        if (contextual && link) {
+        if (copy) {
+          copy.insertAdjacentElement('afterend', link);
+        } else if (dropdown) {
+          contextual.insertBefore(link, dropdown);
+        } else {
           contextual.appendChild(link);
-          hook.remove();
         }
+        hook.remove();
       })();
     </script>
   <% end %>
