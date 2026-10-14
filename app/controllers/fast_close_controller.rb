@@ -27,6 +27,7 @@ class FastCloseController < ApplicationController
 
     @issue.init_journal(User.current)
     @issue.status = closed_status
+    @issue.done_ratio = 100 if Issue.use_field_for_done_ratio?
 
     if @issue.save
       flash[:notice] = l(:notice_issue_closed)
