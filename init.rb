@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "lib/fast_activate_hook_listener"
 require_relative "lib/fast_close_hook_listener"
 require_relative "lib/fast_close_status_resolver"
 

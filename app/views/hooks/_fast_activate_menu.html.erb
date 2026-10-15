@@ -1,0 +1,52 @@
+<script>
+  (function() {
+    var label = <%= raw l(:button_activate).to_json %>;
+
+    function addActivate(menu) {
+      if (menu.querySelector('a.fast-activate')) return;
+
+      // Single-user menus show Lock for registered users; derive Activate from it.
+      var lock = menu.querySelector('a.icon-lock');
+      if (!lock) return;
+
+      var url = new URL(lock.href, window.location.href);
+      var match = url.pathname.match(/\/users\/(\d+)$/);
+      var row = match && document.getElementById('user-' + match[1]);
+      if (!row || !row.classList.contains('registered')) return;
+
+      var item = lock.closest('li').cloneNode(true);
+      var link = item.querySelector('a');
+      url.searchParams.set('user[status]', '1');
+      link.href = url.toString();
+      link.classList.remove('icon-lock');
+      link.classList.add('icon-unlock', 'fast-activate');
+
+      var use = link.querySelector('svg use');
+      if (use) {
+        var attr = use.hasAttribute('href') ? 'href' : 'xlink:href';
+        use.setAttribute(attr, use.getAttribute(attr).replace(/#icon--lock$/, '#icon--unlock'));
+      }
+      var text = link.querySelector('.icon-label');
+      if (text) {
+        text.textContent = label;
+      } else {
+        link.textContent = label;
+      }
+
+      lock.closest('li').insertAdjacentElement('beforebegin', item);
+    }
+
+    function observe() {
+      var menu = document.getElementById('context-menu');
+      if (!menu) return;
+      new MutationObserver(function() { addActivate(menu); })
+        .observe(menu, { childList: true, subtree: true });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', observe);
+    } else {
+      observe();
+    }
+  })();
+</script>
